@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{budget.title}}
+
+{{error}}
+
+<form method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+
+  <button>
+    Update
+  </button>
+</form>
+
+<form action="{% url 'complete_task' budget.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    complete
+  </button>
+</form>
+
+<form action="{% url 'delete_task' budget.id %}" method="POST">
+  {% csrf_token %}
+  <button>
+    delete
+  </button>
+</form>
+
+{% endblock %}
